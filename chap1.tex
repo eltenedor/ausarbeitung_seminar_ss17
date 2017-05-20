@@ -1,0 +1,149 @@
+\section{Kategorientheoretische Grundlagen}
+
+In diesem Abschnitt füllen wir das Vokabelheft mathematischer Definitionen mit weiteren Begriffen aus der Kategorientheorie.
+
+\subsection{Funktoren, universelle Morphismen und Morphismen von Funktoren}
+
+\begin{defn}[Covarianter Funktor]
+  
+\end{defn}
+
+Contravarianter Funktor
+
+\begin{ex}
+  \begin{itemize}
+    \item Konstanter Funktor
+    \item Vergissfunktor
+    \item Dualisierender Funktor
+    \item Inklusionsfunktor
+    \item Identitätsfunktor $\I_\C$.
+  \end{itemize}
+\end{ex}
+
+\begin{defn}[Universelle Abbildung]
+  Seien $\A$ und $\B$ Kategorien, $\F \colon \A \to \B$ ein Funktor und $B \in |\B|$.
+  Ein Paar $(u, A)$ mit $A \in |\A|$ und $u \colon B \to \F(A)$ heißt \emph{universelle Abbildung für $B$ bezüglich $\F$}, falls für alle $A' \in |\A|$ und alle $f \colon B \to \F(A')$ genau ein $\A$-Morphismus $\overline f \colon A \to A'$ existiert so dass das Diagramm
+  $$
+  \begin{tikzcd}[row sep=2.5em]
+    B \arrow[rd,"u"] \arrow[rr, "f"] &&\F(A') \\
+    &\F(A) \arrow[ru, "\F(\overline{f})"]
+  \end{tikzcd}
+  $$
+  kommutiert.
+  Entsprechend bezeichnet man ein Paar $(A,u)$ mit $A \in |\A|$ und $u \colon \F(A) \to B$ als \emph{co-universelle Abbildung für $B$ bezüglich $\F$}, falls $(u^*, A)$ eine universelle Abbildung für $B$ bezüglich des Funktors $\F^* \colon \A^* \to \B^*$ ist.
+  Dies bedeutet, dass für alls $A' \in |\A|$ und jeden $\B$-Morphismus $f \colon \F^(A') \to B$ ein eindeutiger $\A$-Morphismus existiert, so dass das Diagramm
+  $$
+  \begin{tikzcd}[row sep=2.5em]
+    B  && \ \arrow[ll, "f"] \F(A') \\
+    & \arrow[lu,"u"] \F(A)\arrow[ru, "\F(\overline{f})"] & 
+  \end{tikzcd}
+  $$
+  kommutiert.
+\end{defn}
+
+Im folgenden Lemma beschreiben wir das Verhalten (co-)universeller Abbildungen unter Verknüpfung mit Isomorphismen.
+
+\begin{lem}
+  Seien $\A$ und $\B$ Kategorien, $\F \colon \A \to \B$ ein Funktor und $B \in |\B|$ und $(u,A)$ eine universelle Abbildung für $B$ bezüglich $\F$.
+  Sei nun $v \colon \A \to \underline A$ ein $\A$-Isomorphismus, dann ist auch $(\F(v) \circ u, \underline A )$ eine universelle Abbildung für $B$ bezüglich $\F$.
+
+  Ist $(A, u)$ eine couniverselle Abbildung für $B$ bezüglich $\F$, so ist auch $(\underline A, u \circ \F(v^{-1}))$ eine couniverselle Abbildung für $B$ bezüglich $\F$.
+\end{lem}
+
+\begin{proof}
+  Sei $f \colon B \to \F(A')$ ein $\B$-Morphismus. 
+  So existiert aufgrund der Eigenschaften von $u$ genau ein $\A$-Morphismus $\overline f \colon A \to A'$ mit $f = \F(\overline f) \circ u$.
+  Aufgrund der Eindeutigkeit von $f$ existiert somit genau ein $g \coloneqq v^{-1} \circ \overline f \colon \underline A \to A'$, sodass das Diagramm   
+  $$
+  \begin{tikzcd}[row sep=2.5em]
+    B \arrow[rd,"u"] \arrow[rr, "f"] &&\F(A') \\
+    &\F(A) \arrow[ru, "\F(\overline{f})"] \arrow[rd,"\F(v)"] \\
+    &&\F(\underline A) \arrow[uu,"\F(g)"]
+  \end{tikzcd}
+  $$
+  mitsamt seiner Unterdiagramme kommutiert.
+  Über ein analoges Argument zeigt man, dass im Falle einer couniversellen Abbildung das Diagramm
+  $$
+  \begin{tikzcd}[row sep=2.5em]
+    B  & & \F(A') \arrow[ll, "f"]  \\
+    & \F(A)\arrow[ru, "\F(\overline{f})"] \arrow[lu,"u"] \arrow[rd, "\F(v)"]  & \\
+    & & \F(\underline A) \arrow[uu, "\F(g)"]
+  \end{tikzcd}
+  $$
+  kommutiert.
+\end{proof}
+
+wir zeigen nun gewissermaßen die Umkehrung des vorangehenden Lemmas, nämlich, dass universelle Abbildungen bereits eindeutig bis auf Isomorphie sind.
+
+\begin{prop}[\cite{preuss}, 2.1.6]
+  Seien $(u,A)$ und $(u',A')$ universelle Abbildungen für $B \in |\B|$ bezüglich $\F \colon \A \to \B$.
+  Dann existiert ein Isomorphismus $f \colon A \to \A'$, sodass das Diagramm
+  $$
+  \begin{tikzcd}[row sep=2.5em]
+    B \arrow[rd,"u'"] \arrow[rr, "u"] &&\F(A) \\
+    &\F(A') \arrow[ru, "\F(\overline{f})"]
+  \end{tikzcd}
+  $$
+  kommutiert.
+\end{prop}
+
+\begin{ex}
+  \begin{itemize}
+    \item T0-ifizierung
+    \item Stone-Cech Kompaktifizierung
+    \item Vergissfunktor
+  \end{itemize}
+\end{ex}
+
+\begin{defn}[Natürliche Transformationen/Morphismen von Funktoren]
+  
+\end{defn}
+
+\subsection{Adjungierte Funktoren}
+
+Morphismen zwischen Identitätsfunktor und einer Verkettung von Funktoren
+
+\begin{thm}[\cite{preuss}, 2.1.12]
+  Sei $\F \colon \A \to B$ ein Funktor mit der Eigenschaft, dass für alle $B \in |\B|$ eine universelle Abbildung $(u_B, A_B)$ bezüglich $F$ existiert.
+  Dann existiert genau ein Funktor $\G \colon B \to \A$, sodass Folgendes gilt:
+  \begin{enumerate}[(1)]
+    \item $\G(B) = A_B$ für alle $B \in |\B|$.
+    \item $u = (u_B) \colon \I_B \to \F \circ \G$ ist eine natürliche Transformation.
+  \end{enumerate}
+\end{thm}
+
+\begin{kor}[\cite{preuss}, 2.1.12]
+  Es existiert genau eine natürliche Transformationa $v = (v_A) \colon \G \circ F \to \I_A$, sodass das Folgende gilt:
+  \begin{enumerate}[(a)]
+    \item $\F(v_A) \colon u_{\F(A)} = \1_{\F(A)}$ für alle $A \in |\A|$.
+    \item $v_{\G(B)} \circ \G(u_B) = \1_{\G(B)}$ für alle $B \in |\B|$.
+  \end{enumerate}
+\end{kor}
+
+\begin{defn}[Linksadjungierter Funktor]
+  Sind $\F \colon \A \to \B$ und $\G \colon \B \to \A$ Funktoren und $u = (u_B) \colon \I_\B \to \F \colon \G$ sowie $v = (v_A) \colon \G \circ \F \to \I_\A$ natürliche Transformationen mit den Eigenschaften
+  \begin{enumerate}[(1)]
+    \item $\F(v_A) \colon u_{\F(A)} = \1_{\F(A)}$ für alle $A \in |\A|$ und
+    \item $v_{\G(B)} \circ \G(u_B) = \1_{\G(B)}$ für alle $B \in |\B|$,
+  \end{enumerate}
+  so nennen wir $\G$ den \emph{zu $\F$ linksadjungierten Funktor} und analog nennen wir $\F$ den \emph{zu $\G$ rechtsadjungierten Funktor}.
+  Das Paar $(\G, \F)$ nennen wir ein \emph{Paar adjungierter Funktoren}.
+\end{defn}
+
+\begin{thm}[\cite{preuss}, 2.1.15]
+  Ist $\G \colon \B \to \A$ ein zu $\F \colon \A \to \B$ linksadjungierter Funktor und $u = (u_B) \colon \I_\B \to \F \circ \G$ eine zugehörige natürliche Transformation, dann ist für alle $B \in |B|$ das Paar $(u_B, \G(B))$ eine universelle Abbildung bezüglich $\F$.
+\end{thm}
+
+\begin{bem}[Adjungierte Situation]
+    
+\end{bem}
+
+\begin{ex}
+  \begin{itemize}
+    \item T0-ifizierung
+    \item Stone-Cech
+    \item Vergissfunktor
+  \end{itemize}
+\end{ex}
+
+
