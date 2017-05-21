@@ -1,6 +1,6 @@
 \section{Konvergenzstrukturen und uniforme Konvergenzstrukturen}
 
-In diesem letzten Abschnitt betrachten wir nun unterschiedliche Konvergenzstrukturen und uniforme Strukturen durch die kategorientheoretische Brille, mit dem Ziel diese untereinander in Beziehung zu setzen und die Verbindung von Konvergenzstrukturen und uniformen Strukturen zu verstehen.
+In diesem letzten Abschnitt betrachten wir nun unterschiedliche Konvergenzstrukturen und uniforme Strukturen durch die kategorientheoretische Brille, mit dem Ziel diese untereinander in Beziehung zu setzen und die Verbindung von Konvergenzstrukturen und uniformen Strukturen herzustellen.
 
 
 \subsection{Konvergenzstrukturen}
@@ -27,7 +27,7 @@ Zunächst einmal halten wir fest, welche Konvergenzstrukturen für uns interessa
       \end{enumerate}
     \item[d)] \emph{Limesraum}, falls folgende Bedingung erfüllt ist:
       \begin{enumerate}
-        \item[C4)] $(\F \cap \G, x)$, falls $(\F,x) \in q$ und $(\G,x) \in q$; \emph{Abgeschlossenheit bezüglich endlicher Durchschnitte}
+        \item[C4)] $(\F \cap \G, x) \in q$, falls $(\F,x) \in q$ und $(\G,x) \in q$; \emph{Abgeschlossenheit bezüglich endlicher Durchschnitte}
       \end{enumerate}
     \item[e)] \emph{Pseudotopologischer Raum}, falls folgende Bedingung erfüllt ist:
       \begin{enumerate}
@@ -81,13 +81,168 @@ Entsprechend der Definitionsreihenfolge existiert auch eine Inklusionskette der 
   $\KConv$ ist bireflektives und bicoreflektives Unterkonstrukt von $\GConv$.
 \end{prop}
 
-\begin{prop}[\ref{preuss}, 2.3.1.5]
-  Restliche Unterkonstrukte sind bireflektiv.
+\begin{proof}
+  Sei $(X,q)$ ein verallgemeinerter Konverenzraum.
+  Es lassen sich wie folgt zwei Kent Konvergenzstrukturen $q_r,q_c$ auf $X$ definieren:
+  \begin{align*}
+    &(\F,x) \in q_r \iff \exists (\G, x) \in q \text{, sodass } \G \cap \dot x \subset \F, \\
+    &(\F,x) \in q_c \iff (\F, x) \in q \text{ und } (\F \cap \dot x) \in q.
+  \end{align*}
+  Es ist klar, dass es sich bei beiden Konvergenzstrukturen, um Kent Konvergenzstrukturen handelt.
+  Aus der Konstruktion ergibt sich zudem $q \subset q_r$ und damit $1_X \colon (X,q) \to (X, q_r) \in \Mor_{\GConv}$ sowie $q_s \subset q$ und folglich $1_X \colon (X, q_s) \to (X,q) \in \Mor_{\GConv}$.
+  Ist nun $(Y,u) \in |\KConv|$ und $f \colon (X, q) \to (Y,u)$ ein $\GConv$-Morphismus so ist durch $g \coloneqq 1_X^{-1} \circ f$ der gesuchte $\KConv$-Morphismus für die Faktorisierung gegeben.
+  Damit ist $1_X$ die gesuchte Bireflektion.
+  Analog beweist man den Fall für die Struktur $q_s$, für die $1_X$ zu einer Koreflektion wird.
+\end{proof}
+
+\begin{prop}[\cite{preuss}, 2.3.1.5]
+  Jedes der Konstrukte der Inklusionskette
+  $$
+  \KConv \supset \Lim \supset \PsTop \supset \PrTop \supset \TPrTop.
+  $$
+  ist eine bireflektive, volle und unter Isomorphie abgeschlossenes Unterkonstrukt der vorangehenden.
 \end{prop}
 
 \subsection{Uniforme Konvergenzstrukturen}
 
-In 
+In diesem Abschnitt besprechen wir das zweite für uns interessante topologische Konstrukt mitsamt interessanter Unterkonstrukte.
 
-\subsection{Das fehlende Puzzlestück}
+\begin{defn}[SUConv und Nachfahren]
+  Die Kategorie $\SUConv$ der verallgemeinerten Konvergenzräume mit gleichmäßig stetigen Abbildungen setzt sich wie folgt zusammen:
+  \begin{enumerate}[a)]
+    \item Ein \emph{semiuniformer Konvergenzraum} is ein Paar $(X, \J_X)$, wobei $X$ eine Menge und $\J_X \subset F(X \times X)$ die Menge der \emph{uniformen Filter} ist mit folgenden Eigenschaften:
+      \begin{enumerate}[UC1)]
+         \item $(\dot x \times \dot x) \in \J_X$ für alle $x \in X$.
+         \item $\G \in \J_X$, falls $\F \in \J_X$ und $\F \subset \G$.
+         \item Aus $\F \in \J_X$ folgt $\F^{-1} = \{F^{-1} \colon F \in \F\} \in \J_X$.
+      \end{enumerate}
+    \item Eine Abbildung $f \colon (X, \J_X) \to (Y, \J_Y)$ zwischen semiuniformen Konvergenzräumen heißt \emph{gleichmäßig stetig}, falls $(f \times f)(\J_X) \subset \J_Y$ gilt.
+  \end{enumerate}
+  Ein semiuniformer Konvergenzraum heißt 
+\begin{enumerate}[a)]
+  \item[c)] \emph{semiuniformer Limesraum}, falls die folgende Bedingung erfüllt ist:
+    \begin{enumerate}[UC1)]
+      \item[UC4)] $F \in \J_X$ und $\G \in \J_X$ implizieren $\F \cap \G \in \J_X$.
+    \end{enumerate}
+  \item[d)] \emph{uniformer Limesraum}, falls die folgende Bedingung erfüllt ist:
+    \begin{enumerate}[UC1)]
+      \item[UC5)] $\F \in \J_X$ und $\G \in \J_X$ implizieren $\F \circ \G \in \J_X$.
+    \end{enumerate}
+  \end{enumerate}
+  Ein uniformer Limesraum $(X, \J_X)$ heißt
+  \begin{enumerate}[a)]
+    \item[e)] \emph{Haupt-uniformer Limesraum} falls eine nichtleere Teilmenge $\F$ von $\Pot(X \times X)$ existiert, welche die endliche Durchschnitsseigenschaft besitzt und gegenüber Obermengenbildung abgeschlossen ist und $[F] \coloneqq \{\G \in F(X\times X) \colon \G \supset \F \}= \J_X$ erfüllt.
+  \end{enumerate}
+\end{defn}
 
+Die eben definierten Klassen definieren volle und unter Isomorphie abgeschlossene Unterkonstrukte von $\SUConv$, welche wir im Folgenden mit $\SULim$, $\ULim$ und $\PrULim$ bezeichnen werden.
+
+Auch für diese Unterkonstrukte existiert eine Inklusionsbeziehung
+
+\begin{prop}
+  Jedes der Konstrukte der Inklusionskette
+  $$
+  \SUConv \supset \SULim \supset \ULim \supset \PrULim
+  $$
+  ist ein bireflektives, volles und unter Isomorphie abgeschlossenes Unterkonstrukt der vorangehenden.
+\end{prop}
+
+
+\subsection{Das Bindeglied zwischen Konvergenzstrukturen und uniformen Konvergenzstrukturen}
+
+Haben wir in den beiden vorangehenden Sektionen Konvergenzstrukturen und uniforme Konvergenzstrukturen getrennt betrachtet, so kümmern wir uns nun darum die Verbindung zwischen beiden Strukturen herzustellen.
+Zuvor will jedoch unser Vokabelheft gefüttert werden.
+
+\begin{defn}
+  Die Kategorie $\Fil$ der Filterräume und Cauchy stetigen Abbildungen setzt sich wie folgt zusammen:
+  \begin{enumerate}[a)]
+    \item Ein \emph{Filterraum} ist ein Paar $(X, \gamma)$, wobei $X$ eine Menge und $\gamma$ eine Menge von Filtern ist, sodass die Folgenden Bedingungen erfüllt sind.
+      \begin{enumerate}[F1)]
+        \item $\dot x \in \gamma$ für alle $x \in X$.
+        \item $\G \in \gamma$, falls $\F \in \gamma$ und $\F \subset \G$.
+      \end{enumerate}
+      Ist $(X,\gamma)$ ein Filterraum, so wollen wir die Elemente von $\gamma$ \emph{Cauchy-Filter} nennen.
+    \item Eine Abbildung $f \colon (X, \gamma) \to (X', \gamma')$ zwischen Filterräumen heißt \emph{Cauchy-stetig}, falls $f(\F) \in \gamma'$ gilt, für alle $\F \in \gamma$.
+  \end{enumerate}
+\end{defn}
+
+\begin{defn}
+  Sei $(X, \J_X)$ ein semiuniformer Konvergenzraum.
+  Wir nennen einen Filter auf $X$ einen $\J_X$-\emph{Cauchy-Filter}, wenn $\F \times \F \in \J_X$ gilt.
+\end{defn}
+
+\begin{defn}
+  Wir nennen einen semiuniformen Konvergenzraum $(X, \J_X)$ $\Fil$-bestimmt, falls $\J_X = \J_{\gamma_{J_X}}$ gilt, also $\J_X$ von allen $\J_X$-Cauchy-Filtern
+\end{defn}
+
+Wer bis hierhin gelesen hat, ahnt bereits, was kommen wird: Unser Bindeglied zwischen Konvergenzstrukturen und uniformen Konvergenzstrukturen werden die Filterräume sein. Das ist schon fast richtig. \emph{Fast} im Sinne von \emph{bis auf konkrete Isomorphie}.
+
+
+\begin{prop}[\cite{preuss}, 2.3.3.5]
+  Ist $\FilDSUConv$ das Konstrukt aller $\Fil$-bestimmten semiuniformen Konvergenzräume (mit gleichmäßig stetigen Abbildungen), dann ist $\Fil$ konkret isomorph zu $\FilDSUConv$.
+\end{prop}
+
+Nun geht es ans Eingemachte. Wir stellen die erste Verbindung zu uns bekannten Strukturen her.
+
+\begin{prop}
+  $\FilDSUConv$ ist ein bireflektives und bikoreflektives, volles und unter Isomorphie abgeschlossenes Unterkonstrukt von $\SUConv$.
+\end{prop}
+
+Nun steht nur noch offen eine Verbindung zu Konvergenzstrukturen herzustellen.
+Dies funktioniert jedoch nicht unmittelbar. 
+Um uns im bevorstehenden Terrain weiter bewegen zu können notieren wir in unserem Vokabelheft:
+
+\begin{defn}
+  Ein Filterraum $(X, \gamma)$ heißt vollständig, falls für alle $\F \in \gamma$ ein $x \in X$ existiert mit $\F \cap \dot x \in \gamma$.
+\end{defn}
+
+Damit definieren wir uns nun ein neues Objekt, welches wir in Zusammenhang mit Konvergenzstruktturen bringen werden.
+
+\begin{prop}
+  Das Konstrukt $\CFil$ der vollständigen Filterräume (und Cauchy-stetigen Abbildungen) ist ein volles und unter Isomorphie abgeschlossenes, bicoreflektives Unterkonstrukt von $\Fil$.
+\end{prop}
+
+Die Konvergenzstrukturen, die sich mit $\CFil$ in Verbindung bringen lassen, besitzen eine Symmetrieeigenschaft, welche den Zoo der uns bekannten Konvergenzstrukturen mit weiteren bisher unerkannten Arten ausstattet.
+
+\begin{defn}
+  Ein verallgemeinerter Konvergenzraum $(X,q)$ heißt symmetrisch, falls folgende Bedingung erfüllt ist:
+  \begin{enumerate}[S1)]
+    \item[S)] $(F,x) \in q$ und $y \in \bigcap_{F \in \F}$ implizieren $(F, y) \in q$.
+  \end{enumerate}
+\end{defn}
+
+Nun zu dem Kandidaten, welcher Filterräume und Konvergenzräume verbindet.
+
+\begin{prop}
+  \begin{enumerate}[1)]
+    \item \begin{enumerate}[a)]  
+        \item Sei $(X, \gamma)$ ein Filterraum. Dann wird eine symmetrische Kent Konvergenzstruktur $q_\gamma$ auf $X$ definiert durch
+          $$
+          (\F, x) \in q_\gamma \iff \F \cap \dot x \in \gamma
+          $$
+        \item Ist $f \colon (X, \gamma) \to (X', \gamma')$ eine Cauchy-stetige Abbildung zwischen Filterräumen, so ist $f \colon (X, q_\gamma)$ stetig.
+      \end{enumerate}
+    \item \begin{enumerate}[a)]
+        \item Sei $(X, q)$ ein Kent Konvergenzraum. Dann wird eine vollständige $\Fil$-Struktur $\gamma_q$ auf $X$ definiert durch
+          $$
+          \gamma_q = \{ \F \in \FF(X) \colon \exists x \in X \colon (\F, x ) \in q \}.
+          $$
+        \item Ist $f \colon (X, q) \to (X', q')$ eine stetige Abbildung zwischen Kent Konvergenzräumen, dann ist $f \colon (X, \gamma_q) \to (X', \gamma_{g'})$ Cauchy-stetig.
+      \end{enumerate}
+    \item Das Konstrukt $\CFil$ ist konkret isomorph zum Konstrukt $\KConv_\Sy$ der symmetrischen Kent Konvergenzräume (und stetigen Abbildungen).
+  \end{enumerate}
+\end{prop}<++>
+
+
+Folgendes Diagramm liefert eine Zusammenfassung der besprochenen Sachverhalte:
+$$
+\begin{tikzcd}[column sep=5.5em,row sep=2.5em]
+  \SUConv              &        & \GConv \\
+  \SULim \arrow[u,"r"] &  \Fil\arrow[lu,"rc"]  & \KConv   \arrow[u,"rc"] \\
+  \ULim  \arrow[u,"r"] &        & \Conv\arrow[lu,"c"]    \arrow[u,"r"]    \\
+  \Unif  \arrow[u,"r"] &        & \Lim_S   \arrow[u,"r"]    \\
+                       &        & \PsTop_S \arrow[u,"r"]    \\
+                       &        & \PrTop_S \arrow[u,"r"]    \\
+                       &        & \Top_S   \arrow[u,"r"]    
+\end{tikzcd}
+$$

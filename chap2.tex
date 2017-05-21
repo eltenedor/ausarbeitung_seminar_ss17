@@ -1,9 +1,14 @@
 \section{Reflektive und coreflektive Unterkategorien}
 
 In diesem Abschnitt wollen wir uns speziell mit Inklusionsfunktoren und ihren Adjungierten beschäftigen. 
-In der freien Wildbahn treten Inklusionsfunktoren bei der Betrachtung von Unterkategorien auf.
+In freier Wildbahn treten Inklusionsfunktoren unter anderem bei der Betrachtung von Unterkategorien auf, was sie vor allem für uns so interessant macht.
+
+\subsection{Allgemeine Definitionen}
+
+In diesem Unterabschnitt erweitern wir wieder unser kategorientheoretisches Vokabelheft.
 
 \begin{defn}[Reflektive Unterkategorie]
+  \label{defn:reflektor}
   Sei $A$ eine Unterkategorie einer Kategorie $\C$ und $\F_e \colon \A \to \C$ der Inklusionsfunktor.
   Dann nennen wir $\A$ \emph{reflektiv} in $\C$ genau dann, wenn eine der folgenden äquivalenten Bedingungen erfüllt ist:
   \begin{enumerate}[(1)]
@@ -17,9 +22,19 @@ In der freien Wildbahn treten Inklusionsfunktoren bei der Betrachtung von Unterk
 \end{defn}
 
 \begin{defn}
-  In der Situation von Definition ? nennen wir $\A$ \emph{epireflektiv/ extremal epireflektiv/ bireflektiv in} $\C$, falls $\A$ reflektiv in $\C$ ist und der für alle $X \in |\C|$ existierende $\C$-morphismus $r_X \colon X \to X_\A$ ein Epimorphismus/ extremaler Epimorphismus / Bimorphismus ist.
+  In der Situation von Definition \ref{defn:reflektor} nennen wir $\A$ \emph{epireflektiv/ extremal epireflektiv/ bireflektiv in} $\C$, falls $\A$ reflektiv in $\C$ ist und der für alle $X \in |\C|$ existierende $\C$-morphismus $r_X \colon X \to X_\A$ ein Epimorphismus/ extremaler Epimorphismus / Bimorphismus ist.
   Die Morphismen $r_X$ nennen wir \emph{Epireflektionen/ extremale Epireflektionen/ Bireflektionen}.
 \end{defn}
+
+\subsection{Reflektoren und Coreflektoren\\ in topologischen Konstrukten}
+
+Im nächsten Kapitel werden wir uns mit Unterkategorien von topologischen Konstrukten beschäftigen. Während eine Unterkategorie immer Anlass zu einem Inklusionsfunktor gibt, ist im Allgemeinen nicht klar, dass zu besagtem Inklusionsfunktor ein passender Reflektor oder Coreflektor existiert. 
+Dieser Abschnitt, löst dieses Problem für die Fälle der für uns interessanten Konstrukte.
+
+
+\begin{kor}[\cite{preuss}, 2.2.6]
+  Ein volles und unter Isomorphie abgeschlossenes Unterkonstrukt $\A$ eines topologischen Konstruktes $\C$ ist bireflektiv in $\C$ genau dann, wenn es abgeschlossen ist unter Bildung von Produkten und initialen Unterobjekten.
+\end{kor}
 
 \begin{defn}
   Wir nennen ein Objekt $S$ einer Kategorie $\C$ \emph{Separator}, falls für alle paarweise verschiedenen Morphismen $f,g \colon A \to B$ mit gleichem Definitions und Wertebereich ein Morphismus $h \colon S \to A$ existiert mit der Eigenschaft, dass $f \circ h \neq g \circ h$.
