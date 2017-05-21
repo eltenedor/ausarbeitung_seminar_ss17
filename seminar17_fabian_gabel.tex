@@ -2,33 +2,44 @@
 % Geeignet fuer Bachelorarbeiten, Masterarbeiten und Diplomarbeiten.
 
 %\documentclass[12pt,a4paper,twoside]{report}
-\documentclass[12pt,a4paper,twoside]{article}
-% Benutzt man die Option draft, so kann man die Umbrueche ueberpruefen.
+\documentclass[12pt,a4paper,leqno]{article}
+\usepackage[paper=a4paper,left=25mm,right=25mm,top=25mm,bottom=25mm]{geometry}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 
-% Hier werden alle benoetigten Pakete und Einstellungen geladen. Auch
-% hier sind Sie frei diese direkt in der Praeambel zu laden.
+\usepackage{enumerate}
+\usepackage{amsmath, amssymb, amsthm, dsfont}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{quotes,babel,angles}
+%\usepackage{hyperref}
+\usepackage[pdfauthor={Fabian Gabel},%
+pdftitle={Topologie-Seminar - Reflektionen \& Coreflektionen},%
+%pagebackref=true,%
+%pdftex
+]{hyperref}
+\usepackage{lmodern}
 
-\input{pakete}
+\parindent 0pt
 
-% Hier werden Makros und Umgebungen eingebunden. Diese werden separat
-% in der Datei befehle.tex definiert. Sie sind frei diese Befehle auch
-% direkt in der Praeambel zu definieren.
+\linespread{1.2}
+
+% Inhaltsverzeichnis erstellen.
+
 \input{befehle}
 
 \begin{document}
-% Auf der Titelseite und im Inhaltsverzeichnis sollen keine
-% Seitenzahlen dargestellt werden.
-\pagestyle{empty}
 
-% Hier wird die Titelseite eingebunden.
+\pagestyle{empty}
 \include{titel}
 
-% Inhaltsverzeichnis erstellen.
 \tableofcontents
 
-% Ab sofort werden Seitenzahlen in der Kopfzeile angezeigt.
-\pagestyle{headings}
+%\pagestyle{headings}
 
+\input{intro}
 \input{chap1}
 \input{chap2}
 \input{chap3}

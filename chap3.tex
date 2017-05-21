@@ -2,31 +2,92 @@
 
 In diesem letzten Abschnitt betrachten wir nun unterschiedliche Konvergenzstrukturen und uniforme Strukturen durch die kategorientheoretische Brille, mit dem Ziel diese untereinander in Beziehung zu setzen und die Verbindung von Konvergenzstrukturen und uniformen Strukturen zu verstehen.
 
+
 \subsection{Konvergenzstrukturen}
 
-\begin{defn}
-  \begin{itemize}
-    \item Verallgemeinerter Konvergenzraum
-    \item Kent Konvergenzraum
-    \item Limesraum
-    \item Pseudotopologischer Raum
-    \item Prätopologischer Raum
-  \end{itemize}
+Zunächst einmal halten wir fest, welche Konvergenzstrukturen für uns interessant sein werden.
+
+\begin{defn}[GKonv und seine Kinder]
+  Die Kategorie $\GConv$ der verallgemeinerten Konvergenzräume mit stetigen Abbildungen setzt sich wie folgt zusammen:
+  \begin{enumerate}[a)]
+    \item Für jede Menge $X$ sei $\FF(X)$ die Menge aller Filter auf $X$. 
+      Ein \emph{verallgemeinerter Konvergenzraum} ist ein Paar $(X,q)$, wobei $X$ eine Menge und $q \subset \FF(X) \times X$ eine Relation von Filtern und Punkten (gegen die sie \emph{konvergieren}) ist. 
+      Zusätzlich sollen folgende Eigenschaften erfüllt sein:
+      \begin{enumerate}[C1)]
+        \item $(\dot x, x) \in q$ für alle $x \in X$; \emph{alle Einpunktfilter konvergieren gegen ihren Erzeuger}.
+        \item $(\G, x) \in q$, falls $(F,x) \in q$ und $G \supset F$; \emph{Oberfilter konvergenter Filter, erben Grenzwerte}
+      \end{enumerate}
+    \item Eine Abbildung $f \colon (X,q) \to (X',q')$ zwischen verallgemeinerten Konvergenzräumen heißt \emph{stetig}, falls für alle $(\F,x) \in q$ auch $(f(\F), f(x)) \in q'$ gilt.
+  \end{enumerate}
+  Ein verallgemeinerter Konvergenzraum heißt
+  \begin{enumerate}[a)]
+    \item[c)] \emph{Kent Konvergenzraum}, falls folgende Bedingung erfüllt ist:
+      \begin{enumerate}
+        \item[C3)] $(\F \cap \dot x, x) \in q$, falls $(F, x) \in q$; \emph{Abgeschlossenheit bezüglich endlicher Durchschnitte mit Einpunktfiltern}.
+      \end{enumerate}
+    \item[d)] \emph{Limesraum}, falls folgende Bedingung erfüllt ist:
+      \begin{enumerate}
+        \item[C4)] $(\F \cap \G, x)$, falls $(\F,x) \in q$ und $(\G,x) \in q$; \emph{Abgeschlossenheit bezüglich endlicher Durchschnitte}
+      \end{enumerate}
+    \item[e)] \emph{Pseudotopologischer Raum}, falls folgende Bedingung erfüllt ist:
+      \begin{enumerate}
+        \item[C5)] $(\F,x) \in q$, falls $(\U, x) \in q$ für alle Ultrafilter $\U \supset \F$.
+      \end{enumerate}
+    \item[f)] \emph{Prätopologischer Raum}, falls folgende Bedingung erfüllt ist:
+      \begin{enumerate}
+        \item[C6)] $(\U_q(x), x) \in q$ für alle $x \in X$, wobei $\U_q(x) \coloneqq \bigcap\{ \F \in F(x) \colon (\F, x) \in q\}$
+      \end{enumerate}
+  \end{enumerate}
+  Ein prätopologischer Raum $(X,q)$ heißt 
+  \begin{enumerate}[a)]
+    \item[g)] \emph{topologischer Raum}, falls die folgende Bedingung erfüllt ist:
+      \begin{enumerate}
+        \item[C7)] Für alle $U \in \U_q(x)$ existiert ein $V \in \U_q(x)$ sodass $U \in \U_q(y)$ für alle $y \in V$ gilt.
+      \end{enumerate}
+  \end{enumerate}
 \end{defn}
 
-\begin{bem}[2.3.1.2, S.68, Kette der Konvergenzstrukturen]
-  
+Die eben definierten Klassen definieren volle und unter Isomorphie abgeschlossene Unterkonstrukte von $\GConv$, welche wir im Folgenden mit $\Lim$, $\PsTop$, $\PrTop$ und $\TPrTop$ bezeichnen werden.
+
+\begin{bem}[\cite{preuss}, 2.3.1.2]
+Entsprechend der Definitionsreihenfolge existiert auch eine Inklusionskette der definierten Räumlichkeiten:
+  $$
+  \GConv \supset \KConv \supset \Lim \supset \PsTop \supset \PrTop \supset \TPrTop.
+  $$
 \end{bem}
+
+\begin{proof}
+  Jeder topologische Raum ist per definitionem ein prätopologischer Raum.
+
+  Jeder prätopologische Raum ist ein pseutopologischer Raum: 
+  Ist nämlich $(X,q) \in |\PrTop|$, so gilt $(\F,x) \in q$ genau dann, wenn $\F \supset U_q(x)$. Setzen wir nun voraus, dass $(\U,x) \in q$ für alle Ultrafilter $\U \supset \F$ gilt, so folgt aus
+  $$
+  \U_q(x) \subset \bigcap \{ \U \colon \U \in \FU(\F)\} = \F,
+  $$
+  wobei $\FU(\F)$ die Menge der Oberultrafiter von $\F$ bezeichne, die Behauptung durch Anwendung von C2).
+
+  Jeder pseutotopologische Raum ist ein Limesraum: 
+  Angenommen C4) sei nicht erfüllt für einen Limesraum $(X,q)$, so existieren Filter $\F,\G \in \FF(X)$ mit $(\F,x) \in q$ und $(\G,x) \in q$ aber $(\F \cap \G,x) \not\in q$.
+  Folglich besitzt $(\F \cap \G, x)$ nach C5) ein Oberultrafilterfilter $(\U,x) \not\in q$.
+  Insbesondere gilt nach C2) $\U \not\supset \F$ und $\U \not\supset \G$, es existieren also $F \in \F$ und $G \in \G$ mit $F,G \not \in \U$.
+  Da $\U$ jedoch ein Oberfiter von $\F \cap \G$ ist, enthält er $F \cup G$ und aufgrund der Ultrafiltereigenschaft $F$ oder $G$ im Widerspruch zu $F, G \not\in \U$. 
+
+  Jeder Limesraum ist ein Kent Konvergenzraum: Dies folgt sofort aus C1).
+
+  Dass jeder Kent Konvergenzraum ein verallgemeinerter Konvergenzraum ist, ist wie bei allen anderen Konvergenzstrukturen Teil der Definition.
+\end{proof}
 
 \begin{prop}
   $\KConv$ ist bireflektives und bicoreflektives Unterkonstrukt von $\GConv$.
 \end{prop}
 
-\begin{prop}[2.3.1.5]
-  Restliche Unterkonstrukte sind bireflektive.
+\begin{prop}[\ref{preuss}, 2.3.1.5]
+  Restliche Unterkonstrukte sind bireflektiv.
 \end{prop}
 
 \subsection{Uniforme Konvergenzstrukturen}
+
+In 
 
 \subsection{Das fehlende Puzzlestück}
 

@@ -21,30 +21,49 @@ In der freien Wildbahn treten Inklusionsfunktoren bei der Betrachtung von Unterk
   Die Morphismen $r_X$ nennen wir \emph{Epireflektionen/ extremale Epireflektionen/ Bireflektionen}.
 \end{defn}
 
-  \begin{itemize}
-    \item Reflektive Unterkategorie
-    \item Reflektor
-    \item epireflektive, extremal epireflektiv, bireflektive Unterkategorie
-    \item Reflektionen
-  \end{itemize}
-
 \begin{defn}
-  Wir nennen ein Objekt $S$ eine Kategorie $\C$ \emph{Separator}, falls für alle paarweise verschiedenen Morphismen $f,g \colon A \to B$ mit gleichem Definitions und Wertebereich ein Morphismus $h \colon S \to A$ existiert mit der Eigenschaft, dass $f \circ h \neq g \circ h$.
+  Wir nennen ein Objekt $S$ einer Kategorie $\C$ \emph{Separator}, falls für alle paarweise verschiedenen Morphismen $f,g \colon A \to B$ mit gleichem Definitions und Wertebereich ein Morphismus $h \colon S \to A$ existiert mit der Eigenschaft, dass $f \circ h \neq g \circ h$.
 \end{defn}
 
-Wir halten fest, dass jedes Objekt $(X,\xi)$ eines topologischen Konstrukts $\C$ mit $X \neq \emptyset$ ein Separator ist.
+Wir halten fest, dass jedes Objekt $(X,\xi)$ eines topologischen Konstrukts $\C$ mit $X \neq \emptyset$ ein Separator ist. 
+Denn für zwei paarweise verschiedene Morphismem $f,g \colon (Y, \eta) \to (Z, \theta)$ unterscheiden sich die zugrundeliegenden Mengenabbildungen $f$ und $g$ zumindest schonmal in einem Punkt $y \in Y$. Betrachten wir nun die konstante Abbildung $h \colon X \to Y, h(x) = y$, so ist diese aufgrund der Voraussetzung $X \neq \emptyset$ wohldefiniert und zudem ein Morphismus.
+Damit folgt sofort die Behauptung.
+
+Es stellt sich heraus, dass die bloße Existenz von Separatoren weitere Eigenschaften der Coreflektionen in folgender Weise freilegt.
+
+\begin{thm}[\cite{preuss}, 2.2.9]
+  Sei $S$ ein Separator einer Kategorie $\C$ und $\A$ eine koreflektive Unterkategorie von $\C$, die $S$ enthält.
+  Dann ist $\A$ bereits epicoreflektiv.
+\end{thm}
+
+Wir wissen also, wann eine coreflektive Unterkategorie epicoreflektiv ist. 
+Der folgende Satz geht nun einen Schritt weiter zu bicoreflektiven Unterkategorien.
+
+\begin{thm}
+  Sei $\A$ eine epicoreflektive Unterkategorie von $\C$. 
+  Ist $\A$ zuätzlich eine \emph{volle} Unterkategorie, so ist $\A$ bereits bicoreflektiv.
+\end{thm}
 
 \begin{bem}[2.2.11, S.65]
   Jedes coreflektive, volle und unter Isomorphie abgeschlossene Unterkonstrukt $\A$ eines topologischen Konstrukts $\C$ ist bicoreflektiv, falls $|\A|$ mindestens ein Element mit nicht leerer zugrunde liegender Menge enthält.
 
-  In diesem Fall ist die zu $(X, \xi) \in \C$ gehörige Coreflektion $c_X \colon (Y_\A, \eta_\A) \to (X, \xi)$ bijektiv.
+  Wir wollen im Folgenden zeigen, dass in diesem Fall die Coreflektionen eine sehr einfache Gestalt annehmen.  
+  Für $(X, \xi) \in |\C|$ ist die entsprechende Coreflektion $c_X \colon (Y_\A, \eta_\A) \to (X, \xi)$ bijektiv.
   Nach \cite[1.2.2.7]{preuss} existiert eine $\C$-Struktur $\xi_\A$ auf $X$, sodass $c_X \colon (Y_\A, \eta_\A) \to (X, \xi_\A)$ ein Isomorphismus ist.
-  Da $\A$ nach Voraussetzung abgeschlossen unter Isomorphismen ist, gilt $(X, \xi_\A)\in \A$.
-  Wir zeigen nun, dass $\xi_\A$ die gröbste aller $\C$-Strukturen $\xi'$ ist, für die einerseits $\xi' \leq \xi$ und andererseits $(X, \xi') \in \A$ gilt.
+  Da $\A$ nach Voraussetzung abgeschlossen unter Isomorphismen ist, gilt $(X, \xi_\A)\in |\A|$.
+  Zudem ist $\xi_\A$ die gröbste aller $\C$-Strukturen $\xi'$, für die einerseits $\xi' \leq \xi$ und andererseits $(X, \xi') \in \A$ gilt.
 
+  Nach Lemma \ref{lem:universalCircIso} ist also auch $c_X \circ c_X^{-1} = 1_X \colon (X,\xi_A) \to (X,\xi)$ eine universelle Abbildung, denn da $(Y_A,\eta_A)$ und $(X,\xi_A)$ Elemente aus $|\A|$ sind, ist der $\C$-Morphismus $c_x$ insbesondere ein $\A$-Morphismus, da $\A$ eine volle Unterkategorie von $\C$ ist.
+
+  Daher ist $((X,\xi_A), 1_X)$ die Coreflektion von $(X,\xi)$ bezüglich $\A$, man erhält also bis auf Isomorphie die Coreflektion eines  $\C$-Objekts $(X,\xi)$ bezüglich $\A$ durch eine Modifikation der $\C$-Struktur $\xi$ auf $X$.
 \end{bem}
 
-\begin{thm}[2.2.12, S.66]
+Wir schließen nun dieses Kapitel mit einem letzten Resultat zu allgemeinen Topologischen Konstrukten, welches eine Antwort auf die Frage liefert, wie sich initiale und finale Strukturen auf topologische Unterkonstrukte übertragen.
+
+\begin{thm}[\cite{preuss}, 2.2.12]
+  Sei $\A$ ein volles und unter Isomorphie abgeschlossenes Unterkonstrukt eines topologischen Konstrukts $\C$.
+  Dann ist auch $\A$ topologisch, vorausgesetzt dass $\A$ bireflektiv oder bikoreflektiv in $\C$ ist.
   
+  Ist $\A$ bireflektiv (bicoreflektiv) in $\C$, dann stimmen die initialen (finalen) Strukturen in $\A$ mit denen aus $\C$ überein, während die finalen (initialen) Strukturen in $\A$ aus den finalen (initialen) Strukturen in $\C$ entstehen, indem man den Bireflektor (Bicoreflektor) anwendet.
 \end{thm}
 
