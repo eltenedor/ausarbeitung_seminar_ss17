@@ -96,12 +96,31 @@ Entsprechend der Definitionsreihenfolge existiert auch eine Inklusionskette der 
 \end{proof}
 
 \begin{prop}[\cite{preuss}, 2.3.1.5]
+  \label{prop:inklusion}
   Jedes der Konstrukte der Inklusionskette
   $$
   \KConv \supset \Lim \supset \PsTop \supset \PrTop \supset \TPrTop.
   $$
   ist eine bireflektive, volle und unter Isomorphie abgeschlossenes Unterkonstrukt der vorangehenden.
 \end{prop}
+
+Es mag die Frage aufgekommen sein, weshab wir die Objekte der Kategorie $\TPrTop$ als topologische Räume bezeichnet haben.
+Zwischen besagter Kategorie $\TPrTop$ und $\Top$ besteht eine besondere Art der Isomorphie, die wie sollte es auch anders sein, sich einen Namen gemacht hat:
+\begin{defn}
+  \begin{enumerate}[a)]
+    \item Seien $\A$ und $\B$ Kategorien.
+      Dann nennen wir einen Funktor $\F \colon \A \to \B$ einen \emph{Isomorphismus}, falls ein Funktor $\G \colon \B \to \A$ existiert, sodass $\G \circ \F = \I_\A$ und $\F \circ \G = \I_\B$ gilt.
+    \item Seien $\A$ und $\B$ Konstrukte.
+      Sind $\Ha \colon \A \to \Set$ und $\K \colon \B \to \Set$ die Vergissfunktoren, so nennen wir einen Funktor $\A \to \B$ \emph{konkret}, falls $\K \circ \F = \Ha$ gilt.
+    \item Einen konkreten Funktor $\F \colon \A \to \B$, welcher zudem ein Isomorphismus ist, bezeichnen wir als \emph{konkreten Isomorphismus}.
+    \item Wir nennen zwei Kategorien (zwei Konstrukte) $\A$ und $\B$ \emph{isomorph} (\emph{konkret isomorph}), vorausgesetzt es existiert ein Isomorphismus (konkreter Isomorphismus) $\F \colon \A \to \B$.
+  \end{enumerate}
+\end{defn}
+
+\begin{prop}[\cite{preuss}, 2.3.18]
+  $\Top$ und $\TPrTop$ sind konkret Isomorph.
+\end{prop}
+
 
 \subsection{Uniforme Konvergenzstrukturen}
 
@@ -136,7 +155,6 @@ In diesem Abschnitt besprechen wir das zweite für uns interessante topologische
 \end{defn}
 
 Die eben definierten Klassen definieren volle und unter Isomorphie abgeschlossene Unterkonstrukte von $\SUConv$, welche wir im Folgenden mit $\SULim$, $\ULim$ und $\PrULim$ bezeichnen werden.
-
 Auch für diese Unterkonstrukte existiert eine Inklusionsbeziehung
 
 \begin{prop}
@@ -182,7 +200,7 @@ Wer bis hierhin gelesen hat, ahnt bereits, was kommen wird: Unser Bindeglied zwi
   Ist $\FilDSUConv$ das Konstrukt aller $\Fil$-bestimmten semiuniformen Konvergenzräume (mit gleichmäßig stetigen Abbildungen), dann ist $\Fil$ konkret isomorph zu $\FilDSUConv$.
 \end{prop}
 
-Nun geht es ans Eingemachte. Wir stellen die erste Verbindung zu uns bekannten Strukturen her.
+Nun geht es ans Eingemachte: Wir stellen die erste Verbindung zu uns bekannten Strukturen her.
 
 \begin{prop}
   $\FilDSUConv$ ist ein bireflektives und bikoreflektives, volles und unter Isomorphie abgeschlossenes Unterkonstrukt von $\SUConv$.
@@ -193,10 +211,10 @@ Dies funktioniert jedoch nicht unmittelbar.
 Um uns im bevorstehenden Terrain weiter bewegen zu können notieren wir in unserem Vokabelheft:
 
 \begin{defn}
-  Ein Filterraum $(X, \gamma)$ heißt vollständig, falls für alle $\F \in \gamma$ ein $x \in X$ existiert mit $\F \cap \dot x \in \gamma$.
+  Ein Filterraum $(X, \gamma)$ heißt \emph{vollständig}, falls für alle $\F \in \gamma$ ein $x \in X$ existiert mit $\F \cap \dot x \in \gamma$.
 \end{defn}
 
-Damit definieren wir uns nun ein neues Objekt, welches wir in Zusammenhang mit Konvergenzstruktturen bringen werden.
+Damit definieren wir uns nun ein neues Objekt, welches wir in Zusammenhang mit Konvergenzstrukturen bringen werden.
 
 \begin{prop}
   Das Konstrukt $\CFil$ der vollständigen Filterräume (und Cauchy-stetigen Abbildungen) ist ein volles und unter Isomorphie abgeschlossenes, bicoreflektives Unterkonstrukt von $\Fil$.
@@ -205,7 +223,7 @@ Damit definieren wir uns nun ein neues Objekt, welches wir in Zusammenhang mit K
 Die Konvergenzstrukturen, die sich mit $\CFil$ in Verbindung bringen lassen, besitzen eine Symmetrieeigenschaft, welche den Zoo der uns bekannten Konvergenzstrukturen mit weiteren bisher unerkannten Arten ausstattet.
 
 \begin{defn}
-  Ein verallgemeinerter Konvergenzraum $(X,q)$ heißt symmetrisch, falls folgende Bedingung erfüllt ist:
+  Ein verallgemeinerter Konvergenzraum $(X,q)$ heißt \emph{symmetrisch}, falls folgende Bedingung erfüllt ist:
   \begin{enumerate}[S1)]
     \item[S)] $(F,x) \in q$ und $y \in \bigcap_{F \in \F}$ implizieren $(F, y) \in q$.
   \end{enumerate}
@@ -231,7 +249,21 @@ Nun zu dem Kandidaten, welcher Filterräume und Konvergenzräume verbindet.
       \end{enumerate}
     \item Das Konstrukt $\CFil$ ist konkret isomorph zum Konstrukt $\KConv_\Sy$ der symmetrischen Kent Konvergenzräume (und stetigen Abbildungen).
   \end{enumerate}
-\end{prop}<++>
+\end{prop}
+
+Was hate es nun mit symmetrischen Konvergenzräumen auf sich und wie übertragen sich die Eigenschaften aus Proposition \ref{prop:inklusion} auf ihre symmetrischen Verwandten?
+
+\begin{prop}
+  \begin{enumerate}[1)]
+    \item Sei $\A$ ein topologisches Konstrukt der Klasse Limesraum, pseudotopologischer Raum, prätopologischer Raum oder topologischer Raum.
+      Dann ist das volle und unter Isomoprhie abgeschlossene Unterkonstrukt $\A_\S$ bestehend aus symmetrischen Objekten bireflektiv in $\A$.
+    \item Jedes der Konstrukte der Inklusionskette
+      $$
+      \KConv_\Sy \supset \Lim_\Sy \supset \PsTop_\Sy \supset \PrTop_\Sy \supset \Top_\Sy
+      $$
+      ist ein bireflektives Unterkonstrukt der Vorgänger.
+  \end{enumerate}
+\end{prop}
 
 
 Folgendes Diagramm liefert eine Zusammenfassung der besprochenen Sachverhalte:
@@ -239,10 +271,10 @@ $$
 \begin{tikzcd}[column sep=5.5em,row sep=2.5em]
   \SUConv              &        & \GConv \\
   \SULim \arrow[u,"r"] &  \Fil\arrow[lu,"rc"]  & \KConv   \arrow[u,"rc"] \\
-  \ULim  \arrow[u,"r"] &        & \Conv\arrow[lu,"c"]    \arrow[u,"r"]    \\
-  \Unif  \arrow[u,"r"] &        & \Lim_S   \arrow[u,"r"]    \\
-                       &        & \PsTop_S \arrow[u,"r"]    \\
-                       &        & \PrTop_S \arrow[u,"r"]    \\
-                       &        & \Top_S   \arrow[u,"r"]    
+  \ULim  \arrow[u,"r"] &        & \KConv_\Sy \arrow[lu,"c"]    \arrow[u,"r"]    \\
+  \Unif  \arrow[u,"r"] &        & \Lim_\Sy   \arrow[u,"r"]    \\
+                       &        & \PsTop_\Sy \arrow[u,"r"]    \\
+                       &        & \PrTop_\Sy \arrow[u,"r"]    \\
+                       &        & \Top_\Sy   \arrow[u,"r"]    
 \end{tikzcd}
 $$
