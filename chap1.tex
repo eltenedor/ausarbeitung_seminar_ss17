@@ -2,22 +2,47 @@
 
 In diesem Abschnitt füllen wir das Vokabelheft mathematischer Definitionen mit weiteren Begriffen aus der Kategorientheorie.
 
-\subsection{Funktoren, universelle Morphismen und Morphismen von Funktoren}
+\subsection{Funktoren, universelle Morphismen und natürliche Transformationen}
+
+Wie schon in der Einleitung angekündigt, werden Funktoren in diesem Teil des Seminars eine prominente Rolle spielen, denn wir wollen unterschiedliche Kategorien zueinander in Relation setzen und Abbildungen die dies auf \emph{natürliche} Weise schaffen, nennen wir Funktoren.
 
 \begin{defn}[Covarianter Funktor]
-  
+  Seien $\C$ und $\De$ Kategorien und $\F_1 \colon |\C| \to |\De|$ and $\F_2 \colon \Mor_\C\to \Mor_\De$. 
+  Dann nennen wir das Quadrupel $\F = (\C, \De, \F_1, \F_2)$ einen (\emph{covarianten}) \emph{Funktor} von $\C$ nach $\De$, falls folgende Bedingungen erfüllt sind
+  \begin{enumerate}[F1)]
+    \item $f \in [A, B]_\C$ impliziert $\F(f) \in [\F(A), \F(B)]_\De$.
+    \item $\F(f \circ g) = \F(f) \circ \F(g)$, falls $f \circ g$ definiert ist.
+    \item $\F(1_A) = 1_{\F(A)}$ für alle $A \in |\C|$.
+  \end{enumerate}
+  Abkürzend schreiben wir im Folgenden auch $\F \colon \C \to \De$.
 \end{defn}
 
-Contravarianter Funktor
+Aufgrung der Eigenschaften F2) und F3) bezeichnet man Funktoren machmal auch als Homomorphismen von Morphismen.
+
+Ein \emph{contravarianter Funktor} $\F \colon \C \to \De$ ist gerate ein covarianter Funktor von $\C^* \to \De$, was gerade bedeutet, dass die zusätzlich zu F1) folgende modifizierten Bedingungen gelten:
+\begin{enumerate}[F1')]
+  \item $f \in [A, B]_\C$ impliziert $\F(f) \in [\F(B), \F(A)]_\De$.
+  \item $\F(f \circ g) = \F(g) \circ \F(f)$, falls $f \circ g$ existiert.
+\end{enumerate}
+
+Wir beleben den Begriff des Funktors nun, indem wir bekannte Sachverhalte kategorientheoretisch unter die Lupe nehmen.
 
 \begin{ex}
-  \begin{itemize}
-    \item Konstanter Funktor
-    \item Vergissfunktor
-    \item Dualisierender Funktor
-    \item Inklusionsfunktor
-    \item Identitätsfunktor $\I_\C$.
-  \end{itemize}
+\begin{enumerate}[a)]
+    \item Konstanter Funktor: Sind $\C$ und $\De$ Kategorien und $X \in |\De|$.
+      So lässt sich für alle $A \in |\C|$ und alle $f \in \Mor_\C$ durch $\F(A) = X$ und $\F(f) = 1_X$ ein Funktor definieren, welcher sowohl covariant als auch contravariant ist.
+    \item Vergissfunktor: Ist $\C$ ein (topologisches) Konstrukt, so lässt sich ein Funktor $\F \to \Set$ definieren durch $\F((X, \xi)) = X$ und $\F(f) = f$.
+    \item Dualisierender Funktor $\Delta_\C$: Es lässt sich ein Funktor $\F \colon \C \to \C^*$ definieren durch $\F(X) = X$ und $F(f) = f^*$. Dieser ist natürlich contravariant.
+    \item Dualer Funktor: Ist $\F \colon \C \to \De$ ein Funktor, so erhält man den zugehörigen dualen Funtor als $\Delta_{\De} \circ F \circ \Delta_{\C^*}$
+    \item Inklusionsfunktor: Sei $\C$ eine Kategorie und $\A$ eine \emph{Unterkategorie}, also eine Kategorie für die gilt
+      \begin{enumerate}
+        \item $|\A| \subset |\C|$,
+        \item $[A, B]_\A \subset [A,B]_\C$ für alle $(A, B) \in |\A| \times |\A|$,
+        \item Die Komposition von Morphismen in $\A$ stimmt mit der Komposition in $\C$ überein und die der Identitätsmorphismus ist auch derselbe.
+      \end{enumerate}
+      Git zu alledem sogar $[A, B]_\A = [A, B]_\C$, so bezeichnen wir $\A$ als \emph{volle} Unterkategorie.
+    \item Identitätsfunktor $\I_\C$: Dieser Funktor $\F \colon \C \to \C$ wird durch $\F(X) = X$ und $\F(f) = f$ definiert.
+  \end{enumerate}
 \end{ex}
 
 \begin{defn}[Universelle Abbildung]
@@ -34,8 +59,8 @@ Contravarianter Funktor
   Dies bedeutet, dass für alls $A' \in |\A|$ und jeden $\B$-Morphismus $f \colon \F^(A') \to B$ ein eindeutiger $\A$-Morphismus existiert, so dass das Diagramm
   $$
   \begin{tikzcd}[row sep=2.5em]
-    B  && \ \arrow[ll, "f"] \F(A') \\
-    & \arrow[lu,"u"] \F(A)\arrow[ru, "\F(\overline{f})"] & 
+    B  &&  \arrow[ll, "f"] \F(A')\arrow[ld, "\F(\overline{f})"]  \\
+    & \arrow[lu,"u"]\F(A) & 
   \end{tikzcd}
   $$
   kommutiert.
@@ -46,7 +71,7 @@ Im folgenden Lemma beschreiben wir das Verhalten (co-)universeller Abbildungen u
 \begin{lem}
   \label{lem:universalCircIso}
   Seien $\A$ und $\B$ Kategorien, $\F \colon \A \to \B$ ein Funktor und $B \in |\B|$ und $(u,A)$ eine universelle Abbildung für $B$ bezüglich $\F$.
-  Sei nun $v \colon \A \to \underline A$ ein $\A$-Isomorphismus, dann ist auch $(\F(v) \circ u, \underline A )$ eine universelle Abbildung für $B$ bezüglich $\F$.
+  Sei nun $v \colon A \to \underline A$ ein $\A$-Isomorphismus, dann ist auch $(\F(v) \circ u, \underline A )$ eine universelle Abbildung für $B$ bezüglich $\F$.
 
   Ist $(A, u)$ eine couniverselle Abbildung für $B$ bezüglich $\F$, so ist auch $(\underline A, u \circ \F(v^{-1}))$ eine couniverselle Abbildung für $B$ bezüglich $\F$.
 \end{lem}
@@ -88,12 +113,22 @@ wir zeigen nun gewissermaßen die Umkehrung des vorangehenden Lemmas, nämlich, 
   kommutiert.
 \end{prop}
 
+Widmen wir unsere Aufmerksamkeit nun ein paar famosen Beispielen, um die eigeführten Prinzipien bei der Arbeit zu bestaunen.
+
 \begin{ex}
-  \begin{itemize}
-    \item T0-ifizierung
-    \item Stone-Cech Kompaktifizierung
+  \begin{enumerate}
+    \item T0-ifizierung: 
+    \item Stone-Cech Kompaktifizierung: Sei $\Tych$ die Kategorie der Tychonoff-Räume, und $\CompHaus$ die Kategorie der kompakten Hausdorff-Räume.
+      Ferner bezeichnen wir für $X \in |\Tych|$ mittels $\beta(X)$ seine Stone-\v{C}ech-Kompatifizierung und mit $e_X \colon X \to \beta(X)$ die entsprechende Einbettung. Dann ist nach dem Satz von Stone-\v{C}ech \cite[5.4.8]{bartsch} das Paar $(e_X, \beta(X))$ eine universelle Abbildung bezüglich des Inklusionsfunktors $\F_e \colon \CompHaus \to \Tych$.
+      Ein entsprechend angepasstes kommutatives Diagramm liefert Gewissheit. Hierbei sei $Y \in \CompHaus$ und $f \in [X, \F_e(Y)]_{\Tych}$:
+      $$
+      \begin{tikzcd}[row sep=2.5em]
+        X \arrow[rd,"e_X"] \arrow[rr, "f"] &&\F_e(Y) = Y \\
+        &\F_e(\beta(X)) = \beta(X) \arrow[ru, "\F_e(\overline{f})"]
+      \end{tikzcd}
+      $$
     \item Vergissfunktor
-  \end{itemize}
+  \end{enumerate}
 \end{ex}
 
 \begin{defn}[Natürliche Transformationen/Morphismen von Funktoren]
